@@ -26,6 +26,7 @@ okhttp = "5.0.0-alpha.2"
 pagingRuntimeKtx = "3.3.5"
 roomKtx = "2.6.1"
 timber = "5.0.1"
+jetbrainsKotlinJvm = "2.0.0"
 
 [libraries]
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowlayout" }
@@ -73,4 +74,5 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 
