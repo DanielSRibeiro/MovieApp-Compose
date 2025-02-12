@@ -8,4 +8,5 @@ val BlackSecondary = Color(0xFF000000)
 
 val black = Color(0xFF000000)
 val yellow = Color(0xFFFFAC33)
+val unselectedYellow = Color(0x80FFAC33)
 val white = Color(0xFFFFFFFF)

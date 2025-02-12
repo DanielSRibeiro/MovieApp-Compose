@@ -11,3 +11,24 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
+dependencies {
+
+    //OkHttp
+    api(libs.okhttp)
+    api(libs.logging.interceptor)
+    api(platform(libs.okhttp.bom))
+
+    //Retrofit
+    api(libs.retrofit)
+    api(libs.converter.gson)
+    api(libs.gson)
+
+    // Paging3 Common
+    implementation(libs.androidx.paging.common)
+
+    // Javax inject
+    implementation(libs.javax.inject)
+
+    // Coroutines core
+    api(libs.kotlinx.coroutines.core)
+}
