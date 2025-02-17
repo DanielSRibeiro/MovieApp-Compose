@@ -1,5 +1,7 @@
 package com.example.movieapp.framework.di
 
+import com.example.core.usecase.GetMovieSearchUseCase
+import com.example.core.usecase.GetMovieSearchUseCaseImp
 import com.example.core.usecase.GetPopularMoviesUseCase
 import com.example.core.usecase.GetPopularMoviesUseCaseImp
 import dagger.Binds
@@ -15,4 +17,9 @@ interface UseCaseModule {
     fun bindGetPopularUseCase(
         getPopularMoviesUseCaseImp: GetPopularMoviesUseCaseImp
     ) : GetPopularMoviesUseCase
+
+    @Binds
+    fun bindGetMovieSearchUseCase(
+        getMovieSearchUseCaseImp: GetMovieSearchUseCaseImp
+    ) : GetMovieSearchUseCase
 }

@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.movie_popular_feature.presentation.components
+package com.example.movieapp.presentation.screen.movie_popular_feature.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

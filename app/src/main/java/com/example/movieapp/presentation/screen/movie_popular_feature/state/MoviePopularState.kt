@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.movie_popular_feature.presentation.state
+package com.example.movieapp.presentation.screen.movie_popular_feature.state
 
 import androidx.paging.PagingData
 import com.example.core.domain.model.Movie

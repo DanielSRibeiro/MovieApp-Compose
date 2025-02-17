@@ -29,7 +29,7 @@ class MoviePagingSource @Inject constructor(
 
             LoadResult.Page(
                 data = movies.map { it.toMovie() },
-                prevKey = if (pageNumber == 1) null else pageNumber + 1,
+                prevKey = if (pageNumber == 1) null else pageNumber - 1,
                 nextKey = if (movies.isEmpty()) null else response.page + 1
             )
         } catch (e: IOException) {
@@ -42,6 +42,6 @@ class MoviePagingSource @Inject constructor(
     }
 
     companion object {
-        private const val LIMIT = 20
+        const val LIMIT = 20
     }
 }

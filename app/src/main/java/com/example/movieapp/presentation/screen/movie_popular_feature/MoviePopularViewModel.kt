@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.movie_popular_feature.presentation
+package com.example.movieapp.presentation.screen.movie_popular_feature
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.example.core.usecase.GetPopularMoviesUseCase
-import com.example.movieapp.presentation.movie_popular_feature.presentation.state.MoviePopularState
+import com.example.movieapp.presentation.screen.movie_popular_feature.state.MoviePopularState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

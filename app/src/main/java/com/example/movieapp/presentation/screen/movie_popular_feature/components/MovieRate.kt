@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.movie_popular_feature.presentation.components
+package com.example.movieapp.presentation.screen.movie_popular_feature.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
