@@ -2,18 +2,12 @@ package com.example.core.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.example.core.data.repository.MovieDetailsRepository
 import com.example.core.domain.model.Movie
 import com.example.core.domain.model.MovieDetail
 import com.example.core.usecase.base.ResultStatus
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.core.usecase.base.UseCase
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import retrofit2.HttpException
-import java.io.IOException
 import javax.inject.Inject
 
 interface GetMovieDetailsUseCase {
@@ -23,28 +17,21 @@ interface GetMovieDetailsUseCase {
 
 class GetPopularMoviesUseCaseImp @Inject constructor(
     private val repository: MovieDetailsRepository,
-) :
+) : UseCase<GetMovieDetailsUseCase.Params, Pair<Flow<PagingData<Movie>>?, MovieDetail>>(),
     GetMovieDetailsUseCase {
 
-    override fun invoke(params: GetMovieDetailsUseCase.Params): Flow<ResultStatus<Pair<Flow<PagingData<Movie>>?, MovieDetail>>> {
-        return flow {
-            try {
-                emit(ResultStatus.Loading)
-                val movieDetail = repository.getMoviesDetails(params.movieId)
-                val movieSimilar =
-                    repository.getMoviesSimilar(
-                        movieId = params.movieId,
-                        pagingConfig = PagingConfig(
-                            pageSize = 20,
-                            initialLoadSize = 20
-                        )
-                    )
-                emit(ResultStatus.Success(movieSimilar to movieDetail))
-            } catch (e: IOException) {
-                emit(ResultStatus.Failure(e))
-            } catch (e: HttpException) {
-                emit(ResultStatus.Failure(e))
-            }
-        }.flowOn(Dispatchers.IO)
+    override suspend fun doWork(
+        params: GetMovieDetailsUseCase.Params
+    ): ResultStatus<Pair<Flow<PagingData<Movie>>?, MovieDetail>> {
+        val movieDetail = repository.getMoviesDetails(params.movieId)
+        val movieSimilar =
+            repository.getMoviesSimilar(
+                movieId = params.movieId,
+                pagingConfig = PagingConfig(
+                    pageSize = 20,
+                    initialLoadSize = 20
+                )
+            )
+        return ResultStatus.Success(movieSimilar to movieDetail)
     }
 }
