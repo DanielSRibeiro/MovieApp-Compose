@@ -14,7 +14,7 @@ interface GetPopularMoviesUseCase {
     data class GetPopularMoviesParams(val pagingConfig: PagingConfig)
 }
 
-class GetPopularMoviesUseCaseImp @Inject constructor(
+class GetPopularMoviesUseCaseImpl @Inject constructor(
     private val repository: MoviePopularRepository
 ): GetPopularMoviesUseCase,
     PagingUseCase<GetPopularMoviesUseCase.GetPopularMoviesParams, Movie>() {

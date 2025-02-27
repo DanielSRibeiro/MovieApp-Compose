@@ -3,13 +3,18 @@ package com.example.movieapp.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.example.movieapp.presentation.screen.movie_detail_feature.MovieDetailScreen
+import com.example.movieapp.presentation.screen.movie_detail_feature.MovieDetailViewModel
 import com.example.movieapp.presentation.screen.movie_popular_feature.MoviePopularScreen
 import com.example.movieapp.presentation.screen.movie_popular_feature.MoviePopularViewModel
 import com.example.movieapp.presentation.screen.search_movie_feature.MovieSearchEvent
 import com.example.movieapp.presentation.screen.search_movie_feature.MovieSearchScreen
 import com.example.movieapp.presentation.screen.search_movie_feature.MovieSearchViewModel
+import com.example.movieapp.util.Constants
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -24,7 +29,7 @@ fun NavigationGraph(navController: NavHostController) {
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-
+                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
                 }
             )
         }
@@ -39,12 +44,32 @@ fun NavigationGraph(navController: NavHostController) {
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
-
+                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
                 }
             )
         }
         composable(BottomNavItem.MovieFavorite.route) {
 
+        }
+
+        composable(
+            route = BottomNavItem.MovieDetail.route,
+            arguments = listOf(
+                navArgument(Constants.MOVIE_DETAIL_ARGUMENTS_KEY) {
+                    type = NavType.IntType
+                    defaultValue = 0
+                }
+            )
+        ) {
+            val viewModel: MovieDetailViewModel = hiltViewModel()
+            val uiState = viewModel.uiState
+            val getMovieDetail = viewModel::getMovieDetail
+
+            MovieDetailScreen(
+                id = it.arguments?.getInt(Constants.MOVIE_DETAIL_ARGUMENTS_KEY),
+                uiState = uiState,
+                getMovieDetail = getMovieDetail
+            )
         }
     }
 }

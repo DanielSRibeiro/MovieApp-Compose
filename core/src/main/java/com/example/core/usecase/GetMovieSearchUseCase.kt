@@ -5,7 +5,6 @@ import androidx.paging.PagingData
 import com.example.core.data.repository.MovieSearchRepository
 import com.example.core.domain.model.MovieSearch
 import com.example.core.usecase.base.PagingUseCase
-import com.example.core.usecase.base.UseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -20,7 +19,7 @@ class GetMovieSearchUseCaseImp @Inject constructor(
     PagingUseCase<GetMovieSearchUseCase.GetMovieSearchParams, MovieSearch>() {
 
         override fun createFlowObservable(params: GetMovieSearchUseCase.GetMovieSearchParams): Flow<PagingData<MovieSearch>> {
-        return  repository.getPopularMovies(
+        return repository.getPopularMovies(
             query = params.query,
             pagingConfig = PagingConfig(
                 pageSize = 20,

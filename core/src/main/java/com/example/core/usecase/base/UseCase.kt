@@ -11,7 +11,7 @@ abstract class UseCase<in P, out R> {
         emit(ResultStatus.Loading)
         emit(doWork(params))
     }.catch { throwable ->
-        emit(ResultStatus.Error(throwable))
+        emit(ResultStatus.Failure(throwable))
     }
 
     protected abstract suspend fun doWork(params: P): ResultStatus<R>
