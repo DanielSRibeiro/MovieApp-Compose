@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +23,7 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.movieapp.R
+import com.example.movieapp.presentation.components.commo.AsyncImageUrl
 
 @Composable
 fun MovieItem(
@@ -52,20 +54,15 @@ fun MovieItem(
             elevation = CardDefaults.cardElevation(8.dp)
         ) {
             Box {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(imageUrl)
-                        .crossfade(true)
-                        .placeholder(R.drawable.ic_placeholder)
-                        .error(R.drawable.ic_error_image)
-                        .build(),
-                    contentDescription = "",
-                    contentScale = ContentScale.FillHeight,
+
+                AsyncImageUrl(
                     modifier = Modifier
                         .fillMaxSize()
                         .align(Alignment.Center)
                         .background(Color.Black)
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.FillHeight,
+                    imageUrl = imageUrl,
                 )
             }
         }

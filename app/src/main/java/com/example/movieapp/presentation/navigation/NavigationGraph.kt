@@ -31,7 +31,7 @@ fun NavigationGraph(navController: NavHostController) {
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
+                    navController.navigate(Screens.DetailScreen.passMovieId(movieId = it))
                 }
             )
         }
@@ -46,7 +46,7 @@ fun NavigationGraph(navController: NavHostController) {
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
+                    navController.navigate(Screens.DetailScreen.passMovieId(movieId = it))
                 }
             )
         }
@@ -57,13 +57,12 @@ fun NavigationGraph(navController: NavHostController) {
             MovieFavoriteScreen(
                 uiState = uiState,
                 navigateToDetail = {
-                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
+                    navController.navigate(Screens.DetailScreen.passMovieId(movieId = it))
                 }
             )
         }
-
         composable(
-            route = BottomNavItem.MovieDetail.route,
+            route = Screens.DetailScreen.route,
             arguments = listOf(
                 navArgument(Constants.MOVIE_DETAIL_ARGUMENTS_KEY) {
                     type = NavType.IntType
@@ -74,15 +73,10 @@ fun NavigationGraph(navController: NavHostController) {
             val viewModel: MovieDetailViewModel = hiltViewModel()
             val uiState = viewModel.uiState
             val favorite = viewModel::favorite
-            val checkFavorite = viewModel::checkedFavorite
-            val getMovieDetail = viewModel::getMovieDetail
 
             MovieDetailScreen(
-                id = it.arguments?.getInt(Constants.MOVIE_DETAIL_ARGUMENTS_KEY),
                 uiState = uiState,
-                onAddFavorite = favorite,
-                checkFavorite = checkFavorite,
-                getMovieDetail = getMovieDetail
+                onAddFavorite = favorite
             )
         }
     }

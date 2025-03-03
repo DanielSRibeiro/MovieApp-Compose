@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.core.domain.model.Movie
 import com.example.movieapp.R
+import com.example.movieapp.presentation.components.commo.AsyncImageUrl
 import com.example.movieapp.ui.theme.black
 import com.example.movieapp.ui.theme.white
 
@@ -47,16 +49,12 @@ fun MovieFavoriteItem(
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(movie.imageUrl)
-                        .crossfade(true)
-                        .error(R.drawable.ic_error_image)
-                        .placeholder(R.drawable.ic_placeholder)
-                        .build(),
-                    contentDescription = null,
+                AsyncImageUrl(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
                     contentScale = ContentScale.FillWidth,
-                    modifier = Modifier.fillMaxWidth()
+                    imageUrl = movie.imageUrl,
                 )
             }
             Text(
@@ -75,7 +73,7 @@ fun MovieFavoriteItem(
 @Composable
 fun MovieFavoriteItemPreview() {
     MovieFavoriteItem(
-        movie =  Movie(
+        movie = Movie(
             id = 1,
             title = "Homem Aranha",
             voteAverage = 7.89,
