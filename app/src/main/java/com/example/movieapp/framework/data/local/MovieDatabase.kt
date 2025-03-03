@@ -11,6 +11,5 @@ import com.example.movieapp.framework.data.local.entity.MovieEntity
     exportSchema = false
 )
 abstract class MovieDatabase : RoomDatabase(){
-
     abstract fun movieDao(): MovieDao
 }

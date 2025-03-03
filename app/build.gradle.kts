@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
+
 }
 
 val apiKeyPropertiesFile = rootProject.file("apiKey.properties")
@@ -116,7 +118,7 @@ dependencies {
     //Room
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 }
 kapt {
     correctErrorTypes = true
