@@ -2,7 +2,7 @@ package com.example.movieapp.framework.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.core.data.source.MovieSearchRemoteSource
+import com.example.core.data.network.source.MovieSearchRemoteSource
 import com.example.core.domain.model.MovieSearch
 import com.example.movieapp.framework.data.network.mapper.toMovieSearch
 import com.example.movieapp.framework.data.network.response.SearchResponse

@@ -1,6 +1,6 @@
 package com.example.movieapp.framework.source
 
-import com.example.core.data.source.MoviePopularRemoteDataSource
+import com.example.core.data.network.source.MoviePopularRemoteDataSource
 import com.example.movieapp.framework.data.network.MovieService
 import com.example.movieapp.framework.data.network.response.MovieResponse
 import javax.inject.Inject

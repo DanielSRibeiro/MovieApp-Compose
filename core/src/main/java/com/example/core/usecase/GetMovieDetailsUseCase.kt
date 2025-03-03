@@ -2,7 +2,7 @@ package com.example.core.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.core.data.repository.MovieDetailsRepository
+import com.example.core.data.network.repository.MovieDetailsRepository
 import com.example.core.domain.model.Movie
 import com.example.core.domain.model.MovieDetail
 import com.example.core.usecase.base.ResultStatus

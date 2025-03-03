@@ -1,6 +1,6 @@
 package com.example.movieapp.framework.source
 
-import com.example.core.data.source.MovieDetailsRemoteDataSource
+import com.example.core.data.network.source.MovieDetailsRemoteDataSource
 import com.example.core.domain.model.MovieDetail
 import com.example.movieapp.framework.data.network.MovieService
 import com.example.movieapp.framework.data.network.response.MovieResponse

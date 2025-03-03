@@ -56,10 +56,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
     implementation(project(":core"))
 
@@ -78,8 +74,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Coil
 
     // Coil
     implementation(libs.coil.kt.coil.compose)
@@ -114,15 +108,16 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     //DI - Hilt
-
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     //Room
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
+    annotationProcessor(libs.androidx.room.compiler)
+}
+kapt {
+    correctErrorTypes = true
 }

@@ -1,9 +1,11 @@
 package com.example.core.usecase.base
 
 import androidx.paging.PagingData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 abstract class UseCase<in P, out R> {
 
@@ -12,7 +14,7 @@ abstract class UseCase<in P, out R> {
         emit(doWork(params))
     }.catch { throwable ->
         emit(ResultStatus.Failure(throwable))
-    }
+    }.flowOn(Dispatchers.IO)
 
     protected abstract suspend fun doWork(params: P): ResultStatus<R>
 }

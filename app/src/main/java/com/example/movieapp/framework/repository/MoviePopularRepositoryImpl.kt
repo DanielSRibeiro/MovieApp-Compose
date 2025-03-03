@@ -1,10 +1,10 @@
-package com.example.movieapp.framework
+package com.example.movieapp.framework.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.core.data.repository.MoviePopularRepository
-import com.example.core.data.source.MoviePopularRemoteDataSource
+import com.example.core.data.network.repository.MoviePopularRepository
+import com.example.core.data.network.source.MoviePopularRemoteDataSource
 import com.example.core.domain.model.Movie
 import com.example.movieapp.framework.data.network.response.MovieResponse
 import com.example.movieapp.framework.paging.MoviePagingSource

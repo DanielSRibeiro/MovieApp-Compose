@@ -1,4 +1,4 @@
-package com.example.core.data.source
+package com.example.core.data.network.source
 
 interface MoviePopularRemoteDataSource<T> {
 

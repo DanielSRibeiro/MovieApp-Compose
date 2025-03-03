@@ -2,7 +2,7 @@ package com.example.core.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.core.data.repository.MovieSearchRepository
+import com.example.core.data.network.repository.MovieSearchRepository
 import com.example.core.domain.model.MovieSearch
 import com.example.core.usecase.base.PagingUseCase
 import kotlinx.coroutines.flow.Flow

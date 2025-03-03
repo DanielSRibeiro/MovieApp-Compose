@@ -2,7 +2,7 @@ package com.example.movieapp.framework.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.core.data.source.MoviePopularRemoteDataSource
+import com.example.core.data.network.source.MoviePopularRemoteDataSource
 import com.example.core.domain.model.Movie
 import com.example.movieapp.framework.data.network.mapper.toMovie
 import com.example.movieapp.framework.data.network.response.MovieResponse
