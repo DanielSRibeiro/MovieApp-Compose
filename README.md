@@ -20,7 +20,9 @@ Para obter informações sobre filmes, este aplicativo utiliza a **TMDB API**.
 2. Gere uma API Key acessando "Configuração da Conta" > "API".
 3. Adicione a chave no arquivo `local.properties`:
    ```properties
-   TMDB_API_KEY=SUA_CHAVE_AQUI
+   API_KEY=SUA_CHAVE_AQUI
+   BASE_URL="https://api.themoviedb.org/3/"
+   BASE_URL_IMAGE="https://image.tmdb.org/t/p/w500/"
    ```
 
 ### Endpoints Utilizados
