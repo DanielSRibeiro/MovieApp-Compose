@@ -32,9 +32,14 @@ android {
 
         testInstrumentationRunner = "com.example.movieapp.HiltTestRunner"
 
+        testInstrumentationRunnerArguments["clearPackageData"] = "true"
         buildConfigField("String", "API_KEY", apikeyProperties["API_KEY"].toString())
         buildConfigField("String", "BASE_URL", apikeyProperties["BASE_URL"].toString())
         buildConfigField("String", "BASE_URL_IMAGE", apikeyProperties["BASE_URL_IMAGE"].toString())
+    }
+
+    testOptions {
+        execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
 
     buildTypes {
@@ -59,6 +64,7 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":testing"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -89,6 +95,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.accompanist.flowlayout)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Paging3
     implementation(libs.androidx.paging.runtime.ktx)
@@ -112,32 +119,30 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
-//TESTES
-
     //truth
     implementation(libs.truth)
+    //Javax Inject
+    implementation(libs.javax.inject)
+
+    //Hilt
     androidTestImplementation(libs.hilt.android.testing)
+
     androidTestImplementation(libs.androidx.core.testing)
-    androidTestImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.truth)
 
     androidTestImplementation(libs.androidx.runner)
     androidTestUtil(libs.androidx.orchestrator)
 
-    // Dependência principal do Mockito
-    testImplementation(libs.mockito.core)
-    // Dependência do Mockito para testes no Android
     androidTestImplementation(libs.mockito.android)
-    // Dependência do Mockito para ser possível mockar classes e métodos constantes
     testImplementation(libs.mockito.inline)
 
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 }
 kapt {
     correctErrorTypes = true

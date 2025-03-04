@@ -55,7 +55,6 @@ class MovieDaoTest {
     @Test
     fun should_return_list_of_order_by_id() = runTest {
         // Arrange
-
         val movies = listOf(
             MovieEntity(movieId = 1, title = "Homem de Ferro", imageUrl = "Url1"),
             MovieEntity(movieId = 2, title = "Homem de Ferro", imageUrl = "Url2"),

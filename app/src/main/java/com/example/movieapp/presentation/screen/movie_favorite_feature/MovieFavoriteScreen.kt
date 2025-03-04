@@ -2,15 +2,15 @@ package com.example.movieapp.presentation.screen.movie_favorite_feature
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import com.example.core.domain.model.Movie
 import com.example.movieapp.R
 import com.example.movieapp.presentation.components.commo.MovieAppBar
 
 @Composable
 fun MovieFavoriteScreen(
-    uiState: MovieFavoriteState,
+    movies: List<Movie>,
     navigateToDetail: (Int) -> Unit,
 ) {
-    val movies = uiState.movies
 
     Scaffold(
         topBar = {

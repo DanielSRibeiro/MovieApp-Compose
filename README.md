@@ -29,7 +29,7 @@ Para obter informações sobre filmes, este aplicativo utiliza a **TMDB API**.
 - **Filmes populares**: `GET /movie/popular`
 - **Busca de filmes**: `GET /search/movie`
 - **Detalhes do filme**: `GET /movie/{movie_id}`
-- **Detalhes do filme**: `GET /movie/{movie_id}/similar`
+- **Filmes similares**: `GET /movie/{movie_id}/similar`
 
 ## 📌 Funcionalidades
 
