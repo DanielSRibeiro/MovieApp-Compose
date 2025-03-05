@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingConfig
 import com.example.core.domain.model.Movie
 import com.example.core.usecase.AddMovieFavoriteUseCase
 import com.example.core.usecase.DeleteMovieFavoriteUseCase
@@ -52,7 +53,7 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun favorite(movie: Movie) {
-        if(uiState.iconColor == Color.White) {
+        if (uiState.iconColor == Color.White) {
             event(MovieDetailEvent.AddFavorite(movie))
         } else {
             event(MovieDetailEvent.RemoveFavorite(movie))
@@ -66,6 +67,7 @@ class MovieDetailViewModel @Inject constructor(
                     getMovieDetailsUseCase.invoke(
                         params = GetMovieDetailsUseCase.Params(
                             movieId = event.movieId,
+                            pagingConfig = pagingConfig()
                         )
                     ).collect { result ->
                         when (result) {
@@ -172,5 +174,12 @@ class MovieDetailViewModel @Inject constructor(
 
             }
         }
+    }
+
+    private fun pagingConfig(): PagingConfig {
+        return PagingConfig(
+            pageSize = 20,
+            initialLoadSize = 20
+        )
     }
 }

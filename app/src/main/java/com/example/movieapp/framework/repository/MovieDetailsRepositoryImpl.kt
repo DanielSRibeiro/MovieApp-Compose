@@ -1,15 +1,11 @@
 package com.example.movieapp.framework.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.paging.PagingSource
 import com.example.core.data.network.repository.MovieDetailsRepository
 import com.example.core.data.network.source.MovieDetailsRemoteDataSource
 import com.example.core.domain.model.Movie
 import com.example.core.domain.model.MovieDetail
-import com.example.movieapp.framework.data.network.response.MovieResponse
 import com.example.movieapp.framework.paging.MovieSimilarPagingSource
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieDetailsRepositoryImpl @Inject constructor(
@@ -20,18 +16,9 @@ class MovieDetailsRepositoryImpl @Inject constructor(
         return remoteDataSource.getMoviesDetails(movieId)
     }
 
-    override suspend fun getMoviesSimilar(
+    override fun getMoviesSimilar(
         movieId: Int,
-        pagingConfig: PagingConfig
-    ): Flow<PagingData<Movie>> {
-        return Pager(
-            config = pagingConfig,
-            pagingSourceFactory = {
-                MovieSimilarPagingSource(
-                    movieId = movieId,
-                    remoteDataSource = remoteDataSource
-                )
-            }
-        ).flow
+    ): PagingSource<Int, Movie> {
+        return MovieSimilarPagingSource(remoteDataSource, movieId)
     }
 }

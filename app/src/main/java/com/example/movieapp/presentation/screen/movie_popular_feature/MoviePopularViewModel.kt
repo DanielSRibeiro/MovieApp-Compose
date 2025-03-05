@@ -23,13 +23,17 @@ class MoviePopularViewModel @Inject constructor(
     init {
         val movies = getPopularMoviesUseCase.invoke(
             GetPopularMoviesUseCase.GetPopularMoviesParams(
-                PagingConfig(
-                    pageSize = 20,
-                    initialLoadSize = 20
-                )
+                pagingConfig = pagingConfig()
             )
         ).cachedIn(viewModelScope)
 
         uiState = uiState.copy(movies = movies)
+    }
+
+    private fun pagingConfig(): PagingConfig {
+        return PagingConfig(
+            pageSize = 20,
+            initialLoadSize = 20
+        )
     }
 }

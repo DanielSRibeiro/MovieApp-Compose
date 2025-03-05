@@ -114,8 +114,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
-    //truth
-    implementation(libs.truth)
     //Javax Inject
     implementation(libs.javax.inject)
 
