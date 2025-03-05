@@ -19,7 +19,6 @@ class GetPopularMoviesUseCaseImpl @Inject constructor(
 ): GetPopularMoviesUseCase,
     PagingUseCase<GetPopularMoviesUseCase.GetPopularMoviesParams, Movie>() {
 
-
     override fun createFlowObservable(
         params: GetPopularMoviesUseCase.GetPopularMoviesParams
     ): Flow<PagingData<Movie>> {

@@ -32,14 +32,9 @@ android {
 
         testInstrumentationRunner = "com.example.movieapp.HiltTestRunner"
 
-        testInstrumentationRunnerArguments["clearPackageData"] = "true"
         buildConfigField("String", "API_KEY", apikeyProperties["API_KEY"].toString())
         buildConfigField("String", "BASE_URL", apikeyProperties["BASE_URL"].toString())
         buildConfigField("String", "BASE_URL_IMAGE", apikeyProperties["BASE_URL_IMAGE"].toString())
-    }
-
-    testOptions {
-        execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
 
     buildTypes {
@@ -143,6 +138,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     androidTestImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 }
 kapt {
     correctErrorTypes = true
