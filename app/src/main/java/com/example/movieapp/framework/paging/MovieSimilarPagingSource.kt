@@ -4,14 +4,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.core.data.network.source.MovieDetailsRemoteDataSource
 import com.example.core.domain.model.Movie
-import com.example.movieapp.framework.data.network.mapper.toMovie
-import com.example.movieapp.framework.data.network.response.MovieResponse
-import retrofit2.HttpException
-import java.io.IOException
 import javax.inject.Inject
 
 class MovieSimilarPagingSource @Inject constructor(
-    private val remoteDataSource: MovieDetailsRemoteDataSource<MovieResponse>,
+    private val remoteDataSource: MovieDetailsRemoteDataSource,
     private val movieId: Int
 ) : PagingSource<Int, Movie>() {
 
@@ -26,17 +22,14 @@ class MovieSimilarPagingSource @Inject constructor(
         return try {
             val pageNumber = params.key ?: 1
             val response = remoteDataSource.getMoviesSimilar(page = pageNumber, movieId = movieId)
-            val movies = response.results
+            val movies = response.movies
 
             LoadResult.Page(
-                data = movies.map { it.toMovie() },
+                data = movies,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
                 nextKey = if (movies.isEmpty()) null else response.page + 1
             )
-        } catch (e: IOException) {
-            e.printStackTrace()
-            return LoadResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             e.printStackTrace()
             return LoadResult.Error(e)
         }

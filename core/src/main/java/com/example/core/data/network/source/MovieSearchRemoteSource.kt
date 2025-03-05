@@ -1,5 +1,7 @@
 package com.example.core.data.network.source
 
-interface MovieSearchRemoteSource<T> {
-    suspend fun getSearchMovies(page: Int, query: String): T
+import com.example.core.domain.model.MovieSearchPaging
+
+interface MovieSearchRemoteSource {
+    suspend fun getSearchMovies(page: Int, query: String): MovieSearchPaging
 }

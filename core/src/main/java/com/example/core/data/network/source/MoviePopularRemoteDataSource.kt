@@ -1,6 +1,8 @@
 package com.example.core.data.network.source
 
-interface MoviePopularRemoteDataSource<T> {
+import com.example.core.domain.model.MoviePaging
 
-    suspend fun getPopularMovies(page: Int): T
+interface MoviePopularRemoteDataSource {
+
+    suspend fun getPopularMovies(page: Int): MoviePaging
 }

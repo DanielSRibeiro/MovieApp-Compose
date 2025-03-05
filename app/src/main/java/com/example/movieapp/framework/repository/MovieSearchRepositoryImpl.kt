@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieSearchRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MovieSearchRemoteSource<SearchResponse>
+    private val remoteDataSource: MovieSearchRemoteSource
 ) : MovieSearchRepository {
 
     override fun getPopularMovies(

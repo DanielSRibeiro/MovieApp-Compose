@@ -11,7 +11,7 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class MoviePagingSource @Inject constructor(
-    private val remoteDataSource: MoviePopularRemoteDataSource<MovieResponse>
+    private val remoteDataSource: MoviePopularRemoteDataSource
 ) : PagingSource<Int, Movie>() {
 
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
@@ -25,17 +25,15 @@ class MoviePagingSource @Inject constructor(
         return try {
             val pageNumber = params.key ?: 1
             val response = remoteDataSource.getPopularMovies(page = pageNumber)
-            val movies = response.results
+            val movies = response.movies
+            val totalPages = response.totalPages
 
             LoadResult.Page(
-                data = movies.map { it.toMovie() },
+                data = movies,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                nextKey = if (movies.isEmpty()) null else response.page + 1
+                nextKey = if (pageNumber == totalPages) null else response.page + 1
             )
-        } catch (e: IOException) {
-            e.printStackTrace()
-            LoadResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             e.printStackTrace()
             LoadResult.Error(e)
         }

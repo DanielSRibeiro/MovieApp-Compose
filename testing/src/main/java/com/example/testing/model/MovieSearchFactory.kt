@@ -1,6 +1,5 @@
 package com.example.testing.model
 
-import com.example.core.domain.model.Movie
 import com.example.core.domain.model.MovieSearch
 
 class MovieSearchFactory {

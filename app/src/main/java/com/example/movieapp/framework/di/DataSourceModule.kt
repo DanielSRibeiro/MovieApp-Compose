@@ -4,8 +4,6 @@ import com.example.core.data.local.source.MovieFavoriteLocalDataSource
 import com.example.core.data.network.source.MovieDetailsRemoteDataSource
 import com.example.core.data.network.source.MoviePopularRemoteDataSource
 import com.example.core.data.network.source.MovieSearchRemoteSource
-import com.example.movieapp.framework.data.network.response.MovieResponse
-import com.example.movieapp.framework.data.network.response.SearchResponse
 import com.example.movieapp.framework.source.MovieDetailsRemoteDataSourceImpl
 import com.example.movieapp.framework.source.MovieFavoriteLocalDataSourceImpl
 import com.example.movieapp.framework.source.MoviePopularRemoteDataSourceImpl
@@ -22,17 +20,17 @@ interface DataSourceModule {
     @Binds
     fun bindMovieDataSource(
         moviePopularRemoteDataSourceImpl: MoviePopularRemoteDataSourceImpl
-    ): MoviePopularRemoteDataSource<MovieResponse>
+    ): MoviePopularRemoteDataSource
 
     @Binds
     fun bindMovieSearchRemoteSource(
         movieSearchRemoteSourceImpl: MovieSearchRemoteSourceImpl
-    ): MovieSearchRemoteSource<SearchResponse>
+    ): MovieSearchRemoteSource
 
     @Binds
     fun bindMovieDetailRemoteSource(
         movieDetailsRemoteDataSourceImpl: MovieDetailsRemoteDataSourceImpl
-    ): MovieDetailsRemoteDataSource<MovieResponse>
+    ): MovieDetailsRemoteDataSource
 
     @Binds
     fun bindMovieFavoriteLocalDataSource(

@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieDetailsRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MovieDetailsRemoteDataSource<MovieResponse>
+    private val remoteDataSource: MovieDetailsRemoteDataSource
 ) : MovieDetailsRepository {
 
     override suspend fun getMoviesDetails(movieId: Int): MovieDetail {
