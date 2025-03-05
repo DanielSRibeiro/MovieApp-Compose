@@ -3,6 +3,7 @@ package com.example.core.usecase
 import com.example.core.data.local.repository.MovieFavoriteRepository
 import com.example.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 import javax.inject.Inject
 
 interface GetMovieFavoriteUseCase {
@@ -14,7 +15,11 @@ class GetMovieFavoriteUseCaseImpl @Inject constructor(
 ) : GetMovieFavoriteUseCase {
 
     override fun invoke(): Flow<List<Movie>> {
-        return movieFavoriteRepository.getMovies()
+        return try {
+            movieFavoriteRepository.getMovies()
+        } catch (ex: Exception) {
+            emptyFlow()
+        }
     }
 
 }

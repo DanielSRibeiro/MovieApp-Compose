@@ -11,7 +11,7 @@ Um aplicativo para explorar e salvar filmes favoritos, desenvolvido com as melho
 - [x] **Jetpack Components**: Paging 3, Lifecycle, Navigation, Room, ViewModel
 - [x] **Testes unitários** JUnit e Mockito
 
-## 📚 API
+## 📚 API 
 
 Para obter informações sobre filmes, este aplicativo utiliza a **TMDB API**.
 

@@ -27,7 +27,7 @@ class MovieSimilarPagingSource @Inject constructor(
             LoadResult.Page(
                 data = movies,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                nextKey = if (movies.isEmpty()) null else response.page + 1
+                nextKey = if (pageNumber == response.totalPages) null else response.page + 1
             )
         } catch (e: Exception) {
             e.printStackTrace()

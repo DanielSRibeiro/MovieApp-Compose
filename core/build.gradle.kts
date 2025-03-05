@@ -31,4 +31,6 @@ dependencies {
 
     // Coroutines core
     api(libs.kotlinx.coroutines.core)
+
+    testImplementation(libs.turbine)
 }
